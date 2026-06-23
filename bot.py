@@ -13,9 +13,10 @@ OWNER_ID = 312224589
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text(
-        "🌙 Привет.\n\n"
-        "Здесь можно анонимно задать вопрос или оставить запрос на расклад.\n\n"
-        "Ваше сообщение увидит только Пряник."
+        "🌙 Привет, это пространство для тихих вопросов и запросов на расклад.\n\n"
+"Можно попросить карту дня, совет от карт, расклад на ситуацию, внутреннее состояние или просто выговориться без карт.\n\n"
+"Не обязательно знать, как правильно формулировать запрос — можно просто рассказать свою историю или написать всё так, как чувствуется.\n\n"
+"Просто напиши то, что сейчас важно для тебя 🌙"
     )
 
 
@@ -29,7 +30,6 @@ async def forward_to_owner(update: Update, context: ContextTypes.DEFAULT_TYPE):
         chat_id=OWNER_ID,
         text=(
             f"📩 Новый вопрос\n\n"
-            f"ID: {user.id}\n\n"
             f"{update.message.text}"
         ),
     )
@@ -37,7 +37,9 @@ async def forward_to_owner(update: Update, context: ContextTypes.DEFAULT_TYPE):
     context.bot_data[sent.message_id] = user.id
 
     await update.message.reply_text(
-        "✨ Ваш вопрос отправлен. Когда Пряник ответит, вы получите сообщение здесь."
+       "✨ Спасибо, я получила твой вопрос!\n\n"
+"Когда я познакомлюсь с ним и подготовлю ответ, "
+"ты получишь сообщение в этом чате 🌙"
     )
 
 
